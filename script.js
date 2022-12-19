@@ -47,7 +47,7 @@ function createParagraph(){
     intervalValue.setAttribute("class", "paragraphs");
     let intervalText = document.createTextNode = `${hour}:${minute}:${second}`;
     intervalValue.innerHTML = intervalText;
-    document.querySelector("#intervalContainer").appendChild(intervalValue);
+    document.querySelector(" #intervalContainer").appendChild(intervalValue);
 }
 
 function deleteParagraph(){
