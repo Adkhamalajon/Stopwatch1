@@ -43,11 +43,24 @@ function startPlay(){
 }
 
 function createParagraph(){
+    
     let intervalValue = document.createElement("p")
     intervalValue.setAttribute("class", "paragraphs");
-    let intervalText = document.createTextNode = `${hour}:${minute}:${second}`;
+    let intervalText = document.createTextNode = `${hours.innerHTML}${minutes.innerHTML}${seconds.innerHTML}`;
     intervalValue.innerHTML = intervalText;
     document.querySelector(" #intervalContainer").appendChild(intervalValue);
+    if(second<10){
+        seconds.innerHTML = `0${second}`
+    }
+
+    if(minute<10){
+        minutes.innerHTML = `0${minute}:`
+    }
+
+    if(hour<10){
+        hours.innerHTML = `0${hour}:`
+    }   
+    
 }
 
 function deleteParagraph(){
@@ -68,12 +81,15 @@ playButton.addEventListener("click", ()=>{
     }
 })
 
+
+let orderOfIntervalList=1;
 intervalButton.addEventListener("click", ()=>{
     if(intervalButton.innerHTML == "Restart"){
     
          second = 0;
          minute = 0;
          hour = 0;
+
     
     seconds.innerHTML = second;
     minutes.innerHTML = `${minute}.`;
@@ -97,10 +113,19 @@ intervalButton.addEventListener("click", ()=>{
     intervalButton.innerHTML = ""
     deleteParagraph()
     document.querySelector("#main").setAttribute("class", "")
+    orderOfIntervalList=1
 
     }else{
         createParagraph()
+        let paragraphs = document.querySelector("#intervalContainer").querySelectorAll("p");
+        console.log(paragraphs)
+        for( let i=paragraphs.length -1; i<paragraphs.length;i++){
+            paragraphs[i].innerHTML = `${orderOfIntervalList}.${paragraphs[i].innerHTML}`;
+            paragraphs.sty
+            orderOfIntervalList++;
+        }  
         document.querySelector("#main").setAttribute("class", "counts")
+        
     }
 
 
